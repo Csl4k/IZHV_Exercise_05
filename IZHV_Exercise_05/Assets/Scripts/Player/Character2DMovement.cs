@@ -216,6 +216,16 @@ public class Character2DMovement : MonoBehaviour
 	    var animator = mSelector.charAnimator;
 	    if (animator != null)
 	    {
+            if (mHeadingRight && mInput.move.x == -1)
+            {
+				transform.localScale = new Vector3(-1,1,1);
+				mHeadingRight = false;
+			}
+            else if (!mHeadingRight && mInput.move.x == 1)
+            {
+				transform.localScale = new Vector3(1, 1, 1);
+				mHeadingRight = true;
+			}
 			var currentVerticalSpeed = mController.velocity.y;
 			var currentHorizontalSpeed = new Vector3(mController.velocity.x, 0.0f, mController.velocity.z).magnitude;
 			
